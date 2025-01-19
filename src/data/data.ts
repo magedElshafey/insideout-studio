@@ -27,6 +27,10 @@ export const navLinks: Nav[] = [
     name: "services",
     link: "/services",
   },
+  {
+    name: "portfolio",
+    link: "/portfolio",
+  },
 ];
 
 export const socials: Socials[] = [

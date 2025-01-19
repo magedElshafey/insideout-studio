@@ -2,7 +2,6 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { apiUrl } from "./config";
-import { useAuth } from "../../store/AuthProvider";
 
 export const Axios = axios.create({
   baseURL: apiUrl,
@@ -13,12 +12,6 @@ export const Axios = axios.create({
 });
 const AxiosConfig = () => {
   const { i18n } = useTranslation();
-  const { user } = useAuth();
-  if (user) {
-    Axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${user.access_token}`;
-  }
   useEffect(() => {
     const requestInterceptor = Axios.interceptors.request.use((config) => {
       config.headers["lang"] = i18n.language;
